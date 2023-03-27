@@ -9,6 +9,15 @@ namespace Challenge7
 {
     class Repository
     {
+        public void PrintWorkers(Worker[] workers) {
+            foreach (Worker unit in workers)
+            {
+                Console.WriteLine(unit.Id + " " + unit.FIO);
+            }
+        }
+        public void PrintWorkers(Worker worker) {
+            Console.WriteLine(worker.FIO == null ? "Not Found!" : worker.FIO);
+        }
         public Worker[] GetAllWorkers()
         {
             List<Worker> WorkersList = new List<Worker>();

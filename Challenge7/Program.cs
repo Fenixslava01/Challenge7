@@ -31,9 +31,10 @@ namespace Challenge7
             #region Получаем список всех сотрудников, и выводим их на экран
             Console.WriteLine("Получаем список всех сотрудников, и выводим их на экран\n");
             Worker[] workers = repo.GetAllWorkers();
-            foreach (var worker in workers) {
-                Console.WriteLine(worker.Id + " " + worker.FIO);
-            }
+            repo.PrintWorkers(workers);
+            //foreach (var worker in workers) {
+            //    Console.WriteLine(worker.Id + " " + worker.FIO);
+            //}
             #endregion
             #region Удаляем работника по его id
             Console.WriteLine("Удаляем сотрудника с ID = 2\n");
@@ -42,18 +43,21 @@ namespace Challenge7
             #region Получаем работника по Id и выводим его на экран
             Console.WriteLine("Выводим информацию о сотруднике с ID = 1\n");
             Worker WorkerbyID = repo.GetWorkerById(1);
-            Console.WriteLine(WorkerbyID.FIO == null ? "Not Found!" : WorkerbyID.FIO);
+            repo.PrintWorkers(WorkerbyID);
             #endregion
             #region Фильтруем работников в диапазоне дат по дате добавления
             Console.WriteLine("Выводим сотрудников с датой добавления между 01.01.2020 и 01.09.2022\n");
             Worker[] Filtered = repo.GetWorkersBetweenTwoDates(Convert.ToDateTime("01.01.2020"), Convert.ToDateTime("01.09.2022"));
-            foreach (var worker in Filtered) {
-                Console.WriteLine(worker.Id + " " + worker.FIO);
-            }
+            repo.PrintWorkers(Filtered);
+            //foreach (var worker in Filtered) {
+            //    Console.WriteLine(worker.Id + " " + worker.FIO);
+            //}
             #endregion
             #region Сортируем работников по FIO или по Id
             Console.WriteLine("Сортируем сотрудников по FIO\n");
             repo.SortWorkersByField("FIO");
+            Console.WriteLine("Сортируем сотрудников по Id\n");
+            repo.SortWorkersByField("Id");
             #endregion
         }
     }
